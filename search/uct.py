@@ -55,7 +55,9 @@ class UCTNode():
         # Child nodes are multiplied by -1 because we want max(-opponent eval)
         turnfactor = -1
         while current.parent is not None:
-            current.number_visits += 1
+            if turnfactor > 0:
+                current.number_visits += 1
+
             current.total_value += (value_estimate *
                                     turnfactor)
             current = current.parent
